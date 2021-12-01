@@ -7,5 +7,6 @@ namespace Imenik.Model
         public string PuniNaziv { get; set; }
         public string SkraceniNaziv { get; set; }
         public int Oznaka { get; set; }
+        public Sifrarnik Sifrarnik { get; set; }
     }
 }

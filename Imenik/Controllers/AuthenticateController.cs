@@ -27,6 +27,8 @@ namespace Imenik.Controllers
             this._userManager = userManager;
             _configuration = configuration;
         }
+
+        //POST/api/Authenticate/login
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
@@ -66,6 +68,7 @@ namespace Imenik.Controllers
             return Unauthorized();
         }
 
+        //POST/api/Authenticate/register
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
