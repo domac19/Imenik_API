@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Imenik.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ImenikController : ControllerBase
@@ -19,6 +18,7 @@ namespace Imenik.Controllers
         [HttpGet]
         public ActionResult<List<Sifrarnik>> GetAll() => ImenikService.GetAll();
 
+        [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
         public ActionResult<Sifrarnik> Get(int id)
@@ -31,6 +31,7 @@ namespace Imenik.Controllers
             return sifrarnik;
         }
 
+        [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
         public IActionResult Update(int id, Sifrarnik sifrarnik)
@@ -48,6 +49,7 @@ namespace Imenik.Controllers
             return NoContent();
         }
 
+        [Authorize]
         //POST/api/Imenik
         [HttpPost]
         public IActionResult Create(Sifrarnik sifrarnik)
@@ -56,6 +58,7 @@ namespace Imenik.Controllers
             return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id }, sifrarnik);
         }
 
+        [Authorize]
         //DELETE/api/Imenik/5
         [HttpDelete("{id}")]
         public IActionResult DeleteSifrarnik(int id)
