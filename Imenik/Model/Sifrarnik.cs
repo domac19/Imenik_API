@@ -1,8 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Imenik.Model
 {
     public class Sifrarnik
     {
+        [Required]
+        public int Id { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Email { get; set; }
