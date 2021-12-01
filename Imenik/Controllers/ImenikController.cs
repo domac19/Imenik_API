@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Imenik.Model;
 using Imenik.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Imenik.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ImenikController : ControllerBase

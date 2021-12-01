@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Imenik.Model;
+using Imenik.Authentication;
 
 namespace Imenik.Context
 {
-    public class ApiContext : DbContext
+    public class ApiContext : IdentityDbContext<ApplicationUser>
     {
 
         public ApiContext(DbContextOptions<ApiContext> options)
