@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Imenik.Model;
-using Imenik.Services;
 using Imenik.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +11,6 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Imenik.Controllers
 {
@@ -79,7 +77,6 @@ namespace Imenik.Controllers
 
             ApplicationUser user = new ApplicationUser()
             {
-                //SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.KorisnickoIme
             };
             var result = await _userManager.CreateAsync(user, model.Lozinka);

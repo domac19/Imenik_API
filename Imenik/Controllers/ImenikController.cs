@@ -55,7 +55,7 @@ namespace Imenik.Controllers
         public IActionResult Create(Sifrarnik sifrarnik)
         {
             ImenikService.Add(sifrarnik);
-            return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id }, sifrarnik);
+            return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id, name = sifrarnik.Ime }, sifrarnik);
         }
 
         [Authorize]

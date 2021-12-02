@@ -18,5 +18,7 @@ namespace Imenik.Model
         public int KucniBroj { get; set; }
         public int SifarnikZupanijaId { get; set; }
         public int SifarnikDrzavaId { get; set; }
+        public List<Zupanija> Zupanije { get; set; }
+        public List<Drzava> Drzave { get; set; }
     }
 }
