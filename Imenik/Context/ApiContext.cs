@@ -7,6 +7,10 @@ namespace Imenik.Context
 {
     public class ApiContext : IdentityDbContext<ApplicationUser>
     {
+        public ApiContext()
+        {
+        }
+
         public ApiContext(DbContextOptions<ApiContext> options)
             : base(options)
         { 

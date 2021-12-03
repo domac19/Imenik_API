@@ -8,6 +8,5 @@ namespace Imenik.Model
         public string SkraceniNaziv { get; set; }
         public string PozivniBrojZupanije { get; set; }
         public int DrzavaId { get; set; }
-        public Sifrarnik Sifrarnik { get; set; }
     }
 }

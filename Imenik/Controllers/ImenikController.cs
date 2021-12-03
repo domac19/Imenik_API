@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Imenik.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Imenik")]
     [ApiController]
     public class ImenikController : ControllerBase
     {
         public ImenikController()
         {
+           
         }
-
         //GET/api/Imenik
         [HttpGet]
         public ActionResult<List<Sifrarnik>> GetAll() => ImenikService.GetAll();
