@@ -1,7 +1,6 @@
 using Imenik.Context;
 using Imenik.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +25,7 @@ namespace Imenik
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("Imenik"));
-            services.AddDbContext<ApiContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase("Imenik"));            
             services.AddControllers();
 
             // Identity
@@ -60,8 +58,9 @@ namespace Imenik
                 swagger.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ASP.NET 5 Web API",
-                    Description = "Authentication and Authorization in ASP.NET 5 with JWT and Swagger"
+                    Title = "Imenik API",
+                    Description = "Ovo je primjer Imenika koji sadrži osnovne informacije o osobama, " +
+                                  "koje se mogu pregledati ažurirati i brisati."
                 });
                 // To Enable authorization using Swagger (JWT)    
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -92,12 +91,10 @@ namespace Imenik
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
+            
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Imenik v1"));
             

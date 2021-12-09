@@ -81,7 +81,7 @@ namespace Imenik.Controllers
             };
             var result = await _userManager.CreateAsync(user, model.Lozinka);
             if (!result.Succeeded)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Poruka = "User creation failed! Please check user details and try again." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Poruka = "User creation failed! You need to add one capital letter, number and special sign to password." });
 
             return Ok(new Response { Status = "Success", Poruka = "User created successfully!" });
         }

@@ -12,16 +12,16 @@ namespace Imenik.Controllers
     {
         public ImenikController()
         {
-           
+
         }
         //GET/api/Imenik
         [HttpGet]
-        public ActionResult<List<Sifrarnik>> GetAll() => ImenikService.GetAll();
+        public ActionResult<List<Model.Imenik>> GetAll() => ImenikService.GetAll();
 
         [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public ActionResult<Sifrarnik> Get(int id)
+        public ActionResult<Model.Imenik> Get(int id)
         {
             var sifrarnik = ImenikService.Get(id);
 
@@ -34,7 +34,7 @@ namespace Imenik.Controllers
         [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Sifrarnik sifrarnik)
+        public IActionResult Update(int id, Model.Imenik sifrarnik)
         {
             if (id != sifrarnik.Id)
                 return BadRequest();
@@ -52,7 +52,7 @@ namespace Imenik.Controllers
         [Authorize]
         //POST/api/Imenik
         [HttpPost]
-        public IActionResult Create(Sifrarnik sifrarnik)
+        public IActionResult Create(Model.Imenik sifrarnik)
         {
             ImenikService.Add(sifrarnik);
             return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id, name = sifrarnik.Ime }, sifrarnik);
