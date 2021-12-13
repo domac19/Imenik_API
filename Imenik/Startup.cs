@@ -1,5 +1,5 @@
-using Imenik.Context;
-using Imenik.Authentication;
+using Imenik_API.Context;
+using Imenik_API.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 
-namespace Imenik
+namespace Imenik_API
 {
     public class Startup
     {

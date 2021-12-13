@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Imenik.Model;
-using Imenik.Authentication;
+using Imenik_API.Model;
+using Imenik_API.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Imenik.Controllers
+namespace Imenik_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

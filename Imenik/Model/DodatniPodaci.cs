@@ -1,4 +1,4 @@
-﻿namespace Imenik.Model
+﻿namespace Imenik_API.Model
 {
     public class DodatniPodaci
     {

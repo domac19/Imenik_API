@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imenik", "Imenik\Imenik.csproj", "{319FA90F-2FA4-4930-94B1-750510255519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imenik_API", "Imenik\Imenik_API.csproj", "{319FA90F-2FA4-4930-94B1-750510255519}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

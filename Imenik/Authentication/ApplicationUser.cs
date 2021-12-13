@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Imenik.Authentication
+namespace Imenik_API.Authentication
 {
     public class ApplicationUser : IdentityUser
     {

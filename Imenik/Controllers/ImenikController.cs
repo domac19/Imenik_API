@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Imenik.Model;
-using Imenik.Services;
+using Imenik_API.Model;
+using Imenik_API.Services;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Imenik.Controllers
+namespace Imenik_API.Controllers
 {
     [Route("api/Imenik")]
     [ApiController]
@@ -16,12 +16,12 @@ namespace Imenik.Controllers
         }
         //GET/api/Imenik
         [HttpGet]
-        public ActionResult<List<Model.Imenik>> GetAll() => ImenikService.GetAll();
+        public ActionResult<List<Imenik>> GetAll() => ImenikService.GetAll();
 
         [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public ActionResult<Model.Imenik> Get(int id)
+        public ActionResult<Imenik> Get(int id)
         {
             var sifrarnik = ImenikService.Get(id);
 
@@ -34,7 +34,7 @@ namespace Imenik.Controllers
         [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Model.Imenik sifrarnik)
+        public IActionResult Update(int id, Imenik sifrarnik)
         {
             if (id != sifrarnik.Id)
                 return BadRequest();
@@ -52,7 +52,7 @@ namespace Imenik.Controllers
         [Authorize]
         //POST/api/Imenik
         [HttpPost]
-        public IActionResult Create(Model.Imenik sifrarnik)
+        public IActionResult Create(Imenik sifrarnik)
         {
             ImenikService.Add(sifrarnik);
             return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id, name = sifrarnik.Ime }, sifrarnik);

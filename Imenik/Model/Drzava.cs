@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Imenik.Model
+namespace Imenik_API.Model
 {
     public class Drzava
     {

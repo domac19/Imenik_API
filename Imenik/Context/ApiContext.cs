@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Imenik.Model;
-using Imenik.Authentication;
+using Imenik_API.Model;
+using Imenik_API.Authentication;
 
-namespace Imenik.Context
+namespace Imenik_API.Context
 {
     public class ApiContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<Model.Imenik> Sifrarnici { get; set; }
+        public DbSet<Imenik> Sifrarnici { get; set; }
         public DbSet<Drzava> Drzave { get; set; }
         public DbSet<Zupanija> Zupanije { get; set; }
         public DbSet<DodatnaAdresa> DodatnaAdresa { get; set; }

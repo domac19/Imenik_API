@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Imenik.Model;
+using Imenik_API.Model;
 
-namespace Imenik.Services
+namespace Imenik_API.Services
 {
     public static class ImenikService
     {
-        static List<Model.Imenik> Sifrarniks { get; }
+        static List<Imenik> Sifrarniks { get; }
         static int nextId = 3;
         static ImenikService()
         {
-            Sifrarniks = new List<Model.Imenik>
+            Sifrarniks = new List<Imenik>
         {
-            new Model.Imenik { Id = 1, 
+            new Imenik { Id = 1, 
                             Ime = "Domagoj", 
                             Prezime = "Licitar", 
                             Email = "licitar.domagoj@gmail.com", 
@@ -25,7 +25,7 @@ namespace Imenik.Services
                             KucniBroj = 28, 
                             SifarnikZupanijaId = 10, 
                             SifarnikDrzavaId = 1 },
-            new Model.Imenik { Id = 2,
+            new Imenik { Id = 2,
                             Ime = "Pero",
                             Prezime = "Perić",
                             Email = "peric123@gmail.com",
@@ -36,7 +36,7 @@ namespace Imenik.Services
                             KucniBroj = 44,
                             SifarnikZupanijaId = 5,
                             SifarnikDrzavaId = 1 },
-            new Model.Imenik { Id = 3,
+            new Imenik { Id = 3,
                             Ime = "Luka",
                             Prezime = "Radić",
                             Email = "radicluk1@gmail.com",
@@ -47,7 +47,7 @@ namespace Imenik.Services
                             KucniBroj = 32,
                             SifarnikZupanijaId = 10,
                             SifarnikDrzavaId = 1 },
-            new Model.Imenik { Id = 4,
+            new Imenik { Id = 4,
                             Ime = "Hrvoje",
                             Prezime = "Hrlić",
                             Email = "hhrlic122@gmail.com",
@@ -61,11 +61,11 @@ namespace Imenik.Services
                 };
         }
 
-        public static List<Model.Imenik> GetAll() => Sifrarniks;
+        public static List<Imenik> GetAll() => Sifrarniks;
 
-        public static Model.Imenik? Get(int id) => Sifrarniks.FirstOrDefault(p => p.Id == id);
+        public static Imenik? Get(int id) => Sifrarniks.FirstOrDefault(p => p.Id == id);
 
-        public static void Add(Model.Imenik sifrarnik)
+        public static void Add(Imenik sifrarnik)
         {
             sifrarnik.Id = nextId++;
             Sifrarniks.Add(sifrarnik);
@@ -80,7 +80,7 @@ namespace Imenik.Services
             Sifrarniks.Remove(sifrarnik);
         }
 
-        public static void Update(Model.Imenik sifrarnik)
+        public static void Update(Imenik sifrarnik)
         {
             var index = Sifrarniks.FindIndex(p => p.Id == sifrarnik.Id);
             if (index == -1)
