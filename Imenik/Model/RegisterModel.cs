@@ -12,6 +12,7 @@ namespace Imenik_API.Model
     {
         [Required (ErrorMessage = "Korisničko ime je obavezno")]
         public string KorisnickoIme { get; set; }
+        
         [Required (ErrorMessage = "Lozinka je obavezna")]
         public string Lozinka { get; set; }
     }

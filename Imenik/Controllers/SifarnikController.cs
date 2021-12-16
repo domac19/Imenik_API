@@ -22,8 +22,8 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllSifarnik()
         {
-            var sifarnik = _apiContext.Sifrarnici.ToList();
-            return Ok(sifarnik);
+            var sifarnikDrzave = _apiContext.ImenikSifarnikDrzave.ToList();
+            return Ok(sifarnikDrzave);
         }
     }
 }

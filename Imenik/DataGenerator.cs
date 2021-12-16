@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Imenik_API
 {
-    public class DataGenerator
+    public partial class DataGenerator
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
