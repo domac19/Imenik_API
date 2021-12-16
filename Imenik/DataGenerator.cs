@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Imenik_API
 {
@@ -28,7 +26,7 @@ namespace Imenik_API
                          Prezime = "Licitar",
                          Email = "licitar.domagoj@gmail.com",
                          Kontakt = 12345,
-                         DatumRodenja = new DateTime(),
+                         DatumRodenja = new DateTime(1996,03,19),
                          Grad = "Petrinja",
                          Ulica = "Artura Turkulina",
                          KucniBroj = 28,
@@ -42,7 +40,7 @@ namespace Imenik_API
                             Prezime = "Perić",
                             Email = "peric123@gmail.com",
                             Kontakt = 51388,
-                            DatumRodenja = new DateTime(),
+                            DatumRodenja = new DateTime(1969,04,07),
                             Grad = "Osijek",
                             Ulica = "Mate Lovraka",
                             KucniBroj = 44,
@@ -56,7 +54,7 @@ namespace Imenik_API
                                 Prezime = "Radić",
                                 Email = "radicluk1@gmail.com",
                                 Kontakt = 99142,
-                                DatumRodenja = new DateTime(),
+                                DatumRodenja = new DateTime(1966,07,12),
                                 Grad = "Popovača",
                                 Ulica = "Luke Lukovića",
                                 KucniBroj = 32,
@@ -70,7 +68,7 @@ namespace Imenik_API
                                 Prezime = "Hrlić",
                                 Email = "hhrlic122@gmail.com",
                                 Kontakt = 84127,
-                                DatumRodenja = new DateTime(),
+                                DatumRodenja = new DateTime(1999,02,15),
                                 Grad = "Zagreb",
                                 Ulica = "Stjepana Radića",
                                 KucniBroj = 12,
