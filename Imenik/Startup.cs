@@ -28,12 +28,6 @@ namespace Imenik_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = dbContext => true;
-            });
-
-            services.AddSwaggerGen();
             services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase(databaseName:"Imenik"));            
             services.AddControllers();
 

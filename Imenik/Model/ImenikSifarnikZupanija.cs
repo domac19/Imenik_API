@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Imenik_API.Model
 {
-    public class Zupanija
+    public class ImenikSifarnikZupanija
     {
         public int Id { get; set; }
         public string PuniNaziv { get; set; }

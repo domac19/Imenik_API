@@ -1,6 +1,6 @@
 ﻿namespace Imenik_API.Model
 {
-    public class DodatniPodaci
+    public class DodatnaAdresa
     {
         public int Id { get; set; }
         public string Grad { get; set; }
