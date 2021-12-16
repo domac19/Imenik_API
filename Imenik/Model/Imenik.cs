@@ -7,8 +7,6 @@ namespace Imenik_API.Model
 {
     public class Imenik
     {
-        [Key]
-        [Required]
         public int Id { get; set; }
         
         public string Ime { get; set; }
@@ -30,11 +28,11 @@ namespace Imenik_API.Model
         public int SifarnikZupanijaId { get; set; }
         
         public int SifarnikDrzavaId { get; set; }
+        public List<DodatniPodaci> DodatniPodaci { get; set; }
 
-        public List<Drzava> Drzave { get; set; } = new List<Drzava> { new Drzava { Id = 1, PuniNaziv = "Republika Hrvatska", SkraceniNaziv = "RH", Oznaka = "EU" },
+        public List<Drzava> Drzave { get; set; } /*= new List<Drzava> { new Drzava { Id = 1, PuniNaziv = "Republika Hrvatska", SkraceniNaziv = "RH", Oznaka = "EU" },
                                                                       new Drzava { Id = 2, PuniNaziv = "Kraljevina Danska", SkraceniNaziv = "KD", Oznaka = "EU" },
                                                                       new Drzava { Id = 3, PuniNaziv = "Republika Italija", SkraceniNaziv = "RI", Oznaka = "EU" },
-                                                                      new Drzava { Id = 4, PuniNaziv = "Ujedinjeno Kraljevstvo", SkraceniNaziv = "UK", Oznaka = "" }};
-        public List<DodatnaAdresa> DodatneAdrese { get; set; }
+                                                                      new Drzava { Id = 4, PuniNaziv = "Ujedinjeno Kraljevstvo", SkraceniNaziv = "UK", Oznaka = "" }};*/
     }
 }

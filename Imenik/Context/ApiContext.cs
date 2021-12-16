@@ -11,7 +11,6 @@ namespace Imenik_API.Context
         public DbSet<Imenik> Sifrarnici { get; set; }
         public DbSet<Drzava> Drzave { get; set; }
         public DbSet<Zupanija> Zupanije { get; set; }
-        public DbSet<DodatnaAdresa> DodatnaAdresa { get; set; }
 
         public ApiContext(DbContextOptions<ApiContext> options)
             : base(options)

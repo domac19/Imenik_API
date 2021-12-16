@@ -3,6 +3,9 @@ using Imenik_API.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +16,7 @@ using System.Text;
 
 namespace Imenik_API
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -25,7 +28,13 @@ namespace Imenik_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase("Imenik"));            
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = dbContext => true;
+            });
+
+            services.AddSwaggerGen();
+            services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase(databaseName:"Imenik"));            
             services.AddControllers();
 
             // Identity
