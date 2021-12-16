@@ -6,6 +6,7 @@ using Imenik_API.Model;
 using Microsoft.AspNetCore.Authorization;
 using Imenik_API.Context;
 using System.Linq;
+using System.Net;
 
 namespace Imenik_API.Controllers
 {
@@ -24,18 +25,18 @@ namespace Imenik_API.Controllers
             var sifarnik = _apiContext.Sifrarnici.ToList();
             return Ok(sifarnik);
         }
-        /*
+        
         [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public ActionResult<Imenik> Get(int id)
+        public IActionResult Get(int id)
         {
-            var sifrarnik = ImenikService.Get(id);
+            var sifrarnik = _apiContext.Sifrarnici.SingleOrDefault(i => i.Id == id);
 
             if (sifrarnik == null)
                 return NotFound();
 
-            return sifrarnik;
+            return Ok(sifrarnik);
         }
 
         [Authorize]
@@ -46,12 +47,12 @@ namespace Imenik_API.Controllers
             if (id != sifrarnik.Id)
                 return BadRequest();
 
-            var contactExist = ImenikService.Get(id);
+            var contactExist = _apiContext.Sifrarnici.SingleOrDefault(i => i.Id == id);
 
             if (contactExist == null)
                 return NotFound();
 
-            ImenikService.Update(sifrarnik);
+            _apiContext.Sifrarnici.Update(sifrarnik);
 
             return NoContent();
         }
@@ -61,22 +62,22 @@ namespace Imenik_API.Controllers
         [HttpPost]
         public IActionResult Create(Imenik sifrarnik)
         {
-            ImenikService.Add(sifrarnik);
+            _apiContext.Sifrarnici.Add(sifrarnik);
             return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id, name = sifrarnik.Ime }, sifrarnik);
         }
 
         [Authorize]
         //DELETE/api/Imenik/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteSifrarnik(int id)
+        public void DeleteSifrarnik(int id)
         {
-            var sifarnik = ImenikService.Get(id);
+            var sifarnik = _apiContext.Sifrarnici.SingleOrDefault(i => i.Id == id);
 
             if (sifarnik == null)
-                return NotFound();
+                throw new Exception();
 
-            ImenikService.Delete(id);
-            return NoContent();
-        }*/
+            _apiContext.Sifrarnici.Remove(sifarnik);
+            _apiContext.SaveChanges();
+        }
     }
 }
