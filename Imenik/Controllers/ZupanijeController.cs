@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,23 +8,26 @@ using Microsoft.AspNetCore.Authorization;
 using Imenik_API.Context;
 using System.Linq;
 using System.Net;
+using Imenik_API.Dto;
 
 namespace Imenik_API.Controllers
 {
-    [Route("api/Sifarnik")]
-    public class SifarnikController : Controller
+    [Route("api/SifarnikZupanije")]
+    public class ZupanijeController : Controller
     {
         private ApiContext _apiContext { get; set; }
-        public SifarnikController(ApiContext apiContext)
+        public ZupanijeController(ApiContext apiContext)
         {
             _apiContext = apiContext;
         }
 
-        //GET/api/Sifarnik/ImenikSifarnikDrzave
+        //GET/api/Sifarnik/ImenikSifarnikZupanija
         [HttpGet]
         public IActionResult GetAllDrzave()
         {
-            var sifarnikDrzave = _apiContext.ImenikSifarnikDrzave.ToList();
+            var sifarnikDrzave = _apiContext.ImenikSifarnikZupanije.ToList();
+
+            var drzaveDto = sifarnikDrzave.ToList().Select(Mapper.Map<ImenikSifarnikZupanija, SifarnikDrzavaDto>);
             return Ok(sifarnikDrzave);
         }
     }

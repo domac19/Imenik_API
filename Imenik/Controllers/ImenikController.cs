@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
+using Imenik_API.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -23,47 +25,55 @@ namespace Imenik_API.Controllers
         public IActionResult GetAllImenik()
         {
             var sifarnik = _apiContext.Sifrarnici.ToList();
-            return Ok(sifarnik);
+
+            var sifarnikDto = sifarnik.ToList().Select(Mapper.Map<Imenik, ImenikDto>);
+            return Ok(sifarnikDto);
         }
         
         [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ImenikDto GetImenik(int id)
         {
             var sifrarnik = _apiContext.Sifrarnici.SingleOrDefault(i => i.Id == id);
 
             if (sifrarnik == null)
-                return NotFound();
+                throw new Exception();
 
-            return Ok(sifrarnik);
+            return Mapper.Map<Imenik, ImenikDto>(sifrarnik);
         }
 
         [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Imenik sifrarnik)
+        public void UpdateImenik(int id, ImenikDto sifrarnikDto)
         {
-            if (id != sifrarnik.Id)
-                return BadRequest();
+            if (id != sifrarnikDto.Id)
+                throw new Exception();
 
             var contactExist = _apiContext.Sifrarnici.SingleOrDefault(i => i.Id == id);
 
             if (contactExist == null)
-                return NotFound();
+                throw new Exception();
 
-            _apiContext.Sifrarnici.Update(sifrarnik);
+            Mapper.Map(sifrarnikDto, contactExist);
 
-            return NoContent();
+            _apiContext.SaveChanges();
         }
 
         [Authorize]
         //POST/api/Imenik
         [HttpPost]
-        public IActionResult Create(Imenik sifrarnik)
+        public ImenikDto CreateImenik(ImenikDto sifrarnikDto)
         {
-            _apiContext.Sifrarnici.Add(sifrarnik);
-            return CreatedAtAction(nameof(Create), new { id = sifrarnik.Id, name = sifrarnik.Ime }, sifrarnik);
+            var sifarnik = Mapper.Map<ImenikDto, Imenik>(sifrarnikDto);
+
+            _apiContext.Sifrarnici.Add(sifarnik);
+            _apiContext.SaveChanges();
+
+            sifrarnikDto.Id = sifarnik.Id;
+
+            return sifrarnikDto;
         }
 
         [Authorize]

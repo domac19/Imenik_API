@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Imenik_API.AutoMapper;
 
 namespace Imenik_API
 {
@@ -15,6 +17,7 @@ namespace Imenik_API
     {
         public static void Main(string[] args)
         {
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             var host = CreateHostBuilder(args).Build();
 
             using(var scope = host.Services.CreateScope())
