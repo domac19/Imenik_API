@@ -22,7 +22,9 @@ namespace Imenik_API
                 var services = scope.ServiceProvider;
                 var dbContext = services.GetRequiredService<ApiContext>();
 
-                DataGenerator.Initialize(services);
+                ImenikData.Initialize(services);
+                Drzava.Initialize(services);
+                Zupanija.Initialize(services);
             }
             host.Run();
         }

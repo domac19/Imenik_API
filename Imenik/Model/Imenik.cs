@@ -43,9 +43,6 @@ namespace Imenik_API.Model
         public int SifarnikDrzavaId { get; set; }
         public List<DodatnaAdresa> DodatneAdrese { get; set; }
 
-        public List<ImenikSifarnikDrzava> Drzave { get; set; } /*= new List<Drzava> { new Drzava { Id = 1, PuniNaziv = "Republika Hrvatska", SkraceniNaziv = "RH", Oznaka = "EU" },
-                                                                      new Drzava { Id = 2, PuniNaziv = "Kraljevina Danska", SkraceniNaziv = "KD", Oznaka = "EU" },
-                                                                      new Drzava { Id = 3, PuniNaziv = "Republika Italija", SkraceniNaziv = "RI", Oznaka = "EU" },
-                                                                      new Drzava { Id = 4, PuniNaziv = "Ujedinjeno Kraljevstvo", SkraceniNaziv = "UK", Oznaka = "" }};*/
+        public List<ImenikSifarnikDrzava> Drzave { get; set; }
     }
 }

@@ -18,9 +18,10 @@ namespace Imenik_API.Controllers
         {
             _apiContext = apiContext;
         }
-        //GET/api/Sifarnik
+
+        //GET/api/Sifarnik/ImenikSifarnikDrzave
         [HttpGet]
-        public IActionResult GetAllSifarnik()
+        public IActionResult GetAllDrzave()
         {
             var sifarnikDrzave = _apiContext.ImenikSifarnikDrzave.ToList();
             return Ok(sifarnikDrzave);
