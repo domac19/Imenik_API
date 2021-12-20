@@ -6,6 +6,7 @@ namespace Imenik_API.Model
 {
     public class ImenikSifarnikDrzava
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -19,6 +20,9 @@ namespace Imenik_API.Model
         [Required]
         [StringLength(20)]
         public string Oznaka { get; set; }
+        
+        public Imenik Imenici { get; set; }
+
         public List<ImenikSifarnikZupanija> Zupanije { get; set; }
     }
 }

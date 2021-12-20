@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Imenik_API.Context;
 using System.Linq;
 using System.Net;
+using System.Data.Entity;
 
 namespace Imenik_API.Controllers
 {

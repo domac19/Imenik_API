@@ -65,7 +65,6 @@ namespace Imenik_API.Controllers
             }
             return Unauthorized();
         }
-
         //POST/api/Authenticate/register
         [HttpPost]
         [Route("register")]

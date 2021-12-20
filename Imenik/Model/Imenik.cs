@@ -7,6 +7,7 @@ namespace Imenik_API.Model
 {
     public class Imenik
     {
+        [Key]
         public int Id { get; set; }
         
         [Required]
@@ -38,11 +39,18 @@ namespace Imenik_API.Model
         [Required]
         public int KucniBroj { get; set; }
         
+        [Display(Name = "ImenikSifarnikZupanija")]
         public int SifarnikZupanijaId { get; set; }
         
+        [Display(Name = "ImenikSifarnikDrzava")]
         public int SifarnikDrzavaId { get; set; }
+        
         public List<DodatnaAdresa> DodatneAdrese { get; set; }
-
-        public List<ImenikSifarnikDrzava> Drzave { get; set; }
+        
+        [ForeignKey("SifarnikDrzavaId")]
+        public ImenikSifarnikDrzava Drzave { get; set; }
+        
+        [ForeignKey("SifarnikZupanijaId")]
+        public ImenikSifarnikZupanija Zupanije { get; set; }
     }
 }

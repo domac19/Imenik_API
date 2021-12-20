@@ -45,6 +45,6 @@ namespace Imenik_API.Dto
         public int SifarnikDrzavaId { get; set; }
         public List<DodatnaAdresa> DodatneAdrese { get; set; }
 
-        public List<ImenikSifarnikDrzava> Drzave { get; set; }
+        public ImenikSifarnikDrzava Drzave { get; set; }
     }
 }
