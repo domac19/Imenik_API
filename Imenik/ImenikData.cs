@@ -46,7 +46,7 @@ namespace Imenik_API
                             Ulica = "Mate Lovraka",
                             KucniBroj = 44,
                             SifarnikZupanijaId = 5,
-                            SifarnikDrzavaId = 1
+                            SifarnikDrzavaId = 2
                         },
                             new Imenik
                             {
@@ -60,7 +60,7 @@ namespace Imenik_API
                                 Ulica = "Luke Lukovića",
                                 KucniBroj = 32,
                                 SifarnikZupanijaId = 10,
-                                SifarnikDrzavaId = 1
+                                SifarnikDrzavaId = 3
                             },
                             new Imenik
                             {
@@ -74,7 +74,7 @@ namespace Imenik_API
                                 Ulica = "Stjepana Radića",
                                 KucniBroj = 12,
                                 SifarnikZupanijaId = 1,
-                                SifarnikDrzavaId = 1
+                                SifarnikDrzavaId = 4
                             });
                 dbContext.SaveChanges();
             }

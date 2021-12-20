@@ -25,9 +25,7 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllImenik()
         {
-            var sifarnik = _apiContext.Sifrarnici.ToList();
-
-            var sifarnikDto = sifarnik.ToList().Select(Mapper.Map<Imenik, ImenikDto>);
+            var sifarnikDto = _apiContext.Sifrarnici.Include(i => i.Drzave).Select(Mapper.Map<Imenik, ImenikDto>);
             return Ok(sifarnikDto);
         }
         

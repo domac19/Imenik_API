@@ -27,6 +27,5 @@ namespace Imenik_API.Model
         [ForeignKey("DrzavaId")]
         public ImenikSifarnikDrzava Drzave { get; set; }
         
-        public Imenik Imenici { get; set; }
     }
 }

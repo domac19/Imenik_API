@@ -23,12 +23,10 @@ namespace Imenik_API.Controllers
 
         //GET/api/Sifarnik/ImenikSifarnikZupanija
         [HttpGet]
-        public IActionResult GetAllDrzave()
+        public IActionResult GetAllZupanije()
         {
-            var sifarnikDrzave = _apiContext.ImenikSifarnikZupanije.ToList();
-
-            var drzaveDto = sifarnikDrzave.ToList().Select(Mapper.Map<ImenikSifarnikZupanija, SifarnikDrzavaDto>);
-            return Ok(sifarnikDrzave);
+            var drzaveDto = _apiContext.ImenikSifarnikZupanije.ToList().Select(Mapper.Map<ImenikSifarnikZupanija, SifarnikDrzavaDto>);
+            return Ok(drzaveDto);
         }
     }
 }

@@ -21,6 +21,5 @@ namespace Imenik_API.Model
         [StringLength(20)]
         public string Oznaka { get; set; }
         
-        public Imenik Imenici { get; set; }
     }
 }

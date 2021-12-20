@@ -25,10 +25,8 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllDrzave()
         {
-            var sifarnikDrzave = _apiContext.ImenikSifarnikDrzave.ToList();
-
-            var drzaveDto = sifarnikDrzave.ToList().Select(Mapper.Map<ImenikSifarnikDrzava, SifarnikDrzavaDto>);
-            return Ok(sifarnikDrzave);
+            var drzaveDto = _apiContext.ImenikSifarnikDrzave.ToList().Select(Mapper.Map<ImenikSifarnikDrzava, SifarnikDrzavaDto>);
+            return Ok(drzaveDto);
         }
     }
 }
