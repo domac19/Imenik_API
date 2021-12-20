@@ -22,7 +22,5 @@ namespace Imenik_API.Model
         public string Oznaka { get; set; }
         
         public Imenik Imenici { get; set; }
-
-        public List<ImenikSifarnikZupanija> Zupanije { get; set; }
     }
 }
