@@ -6,6 +6,7 @@ namespace Imenik_API.Dto
     public class SifarnikZupanijaDto
     {
         public int Id { get; set; }
+        
         [Required]
         [StringLength(255)]
         public string PuniNaziv { get; set; }

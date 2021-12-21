@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
 using System;
 using Imenik_API.Dto;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Imenik_API.Model;
 using Microsoft.AspNetCore.Authorization;
 using Imenik_API.Context;
 using System.Linq;
-using System.Net;
 using System.Data.Entity;
 
 namespace Imenik_API.Controllers
