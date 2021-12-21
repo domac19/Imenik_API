@@ -29,7 +29,6 @@ namespace Imenik_API.Controllers
             return Ok(sifarnikDto);
         }
         
-        [Authorize]
         //GET/api/Imenik/1
         [HttpGet("{id}")]
         public ImenikDto GetImenik(int id)
