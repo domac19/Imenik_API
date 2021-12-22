@@ -1,90 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using Imenik_API.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Imenik_API.Model;
-using Imenik_API.Authentication;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Imenik_API.Controllers
+namespace JWTAuthentication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthenticateController : ControllerBase
+    public class AuthenticateController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IConfiguration _configuration;
-        public AuthenticateController(UserManager<ApplicationUser> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
+        private IConfiguration _config;
+
+        public AuthenticateController(IConfiguration config)
         {
-            this._userManager = userManager;
-            this._roleManager = roleManager;
-            _configuration = configuration;
+            _config = config;
         }
-
-        //POST/api/Authenticate/login
+        [AllowAnonymous]
         [HttpPost]
-        [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public IActionResult Login([FromBody] LoginModel model)
         {
-            var user = await _userManager.FindByNameAsync(model.KorisnickoIme);
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Lozinka))
+            IActionResult response = Unauthorized();
+            var user = AuthenticateUser(model);
+
+            if (user != null)
             {
-                var userRoles = await _userManager.GetRolesAsync(user);
-
-                var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
-
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
-
-                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-
-                var token = new JwtSecurityToken(
-                    issuer: _configuration["JWT:ValidIssuer"],
-                    audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(3),
-                    claims: authClaims,
-                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                    );
-
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
-                });
+                var tokenString = GenerateJSONWebToken(user);
+                response = Ok(new { token = tokenString });
             }
-            return Unauthorized();
+
+            return response;
         }
-        //POST/api/Authenticate/register
-        [HttpPost]
-        [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+
+        private string GenerateJSONWebToken(LoginModel userInfo)
         {
-            var userExists = await _userManager.FindByNameAsync(model.KorisnickoIme);
-            if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Poruka = "User already exists!" });
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            ApplicationUser user = new ApplicationUser()
-            {
-                UserName = model.KorisnickoIme
+            var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Sub, userInfo.KorisnickoIme),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
-            var result = await _userManager.CreateAsync(user, model.Lozinka);
-            if (!result.Succeeded)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Poruka = "User creation failed! You need to add one capital letter, number and special sign to password." });
 
-            return Ok(new Response { Status = "Success", Poruka = "User created successfully!" });
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+                _config["Jwt:Issuer"],
+                claims,
+                expires: DateTime.Now.AddMinutes(120),
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private LoginModel AuthenticateUser(LoginModel login)
+        {
+            LoginModel user = null;
+
+            //Validate the User Credentials
+            //Demo Purpose, I have Passed HardCoded User Information
+            if (login.KorisnickoIme == "Domagoj")
+            {
+                user = new LoginModel { KorisnickoIme = "Domagoj Licitar", Lozinka = "d0M@c12"};
+            }
+            return user;
         }
     }
 }
