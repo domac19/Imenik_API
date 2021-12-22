@@ -20,8 +20,8 @@ namespace Imenik_API
                 var dbContext = services.GetRequiredService<ApiContext>();
 
                 ImenikData.Initialize(services);
-                Drzava.Initialize(services);
-                Zupanija.Initialize(services);
+                DrzavaData.Initialize(services);
+                ZupanijaData.Initialize(services);
             }
             host.Run();
         }

@@ -20,7 +20,7 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllZupanije()
         {
-            var drzaveDto = _apiContext.ImenikSifarnikZupanije.ToList().Select(Mapper.Map<ImenikSifarnikZupanija, SifarnikDrzavaDto>);
+            var drzaveDto = _apiContext.ImenikSifarnikZupanije.ToList().Select(Mapper.Map<ImenikSifarnikZupanija, SifarnikZupanijaDto>);
             return Ok(drzaveDto);
         }
     }
