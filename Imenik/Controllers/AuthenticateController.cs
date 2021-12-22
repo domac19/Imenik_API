@@ -59,8 +59,6 @@ namespace JWTAuthentication.Controllers
         {
             LoginModel user = null;
 
-            //Validate the User Credentials
-            //Demo Purpose, I have Passed HardCoded User Information
             if (login.KorisnickoIme == "Domagoj")
             {
                 user = new LoginModel { KorisnickoIme = "Domagoj Licitar", Lozinka = "d0M@c12"};
