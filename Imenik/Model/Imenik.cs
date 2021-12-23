@@ -39,18 +39,18 @@ namespace Imenik_API.Model
         [Required]
         public int KucniBroj { get; set; }
         
-        [Display(Name = "ImenikSifarnikZupanija")]
+        [Display(Name = "SifarnikZupanijaId")]
         public int SifarnikZupanijaId { get; set; }
         
-        [Display(Name = "ImenikSifarnikDrzava")]
+        [Display(Name = "SifarnikDrzavaId")]
         public int SifarnikDrzavaId { get; set; }
         
         public List<DodatnaAdresa> DodatneAdrese { get; set; }
         
-        [ForeignKey("SifarnikDrzavaId")]
+        [ForeignKey("ImenikSifarnikDrzava")]
         public ImenikSifarnikDrzava Drzave { get; set; }
         
-        [ForeignKey("SifarnikZupanijaId")]
+        [ForeignKey("ImenikSifarnikZupanija")]
         public ImenikSifarnikZupanija Zupanije { get; set; }
     }
 }
