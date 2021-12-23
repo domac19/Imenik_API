@@ -17,6 +17,9 @@ namespace Imenik_API.AutoMapper
             Mapper.CreateMap<ImenikSifarnikZupanija, SifarnikZupanijaDto>();
             Mapper.CreateMap<SifarnikZupanijaDto, ImenikSifarnikZupanija>();
 
+            Mapper.CreateMap<DodatnaAdresa, DodatnaAdresaDto>();
+            Mapper.CreateMap<DodatnaAdresaDto, DodatnaAdresa>();
+
         }
     }
 }
