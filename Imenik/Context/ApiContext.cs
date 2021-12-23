@@ -8,7 +8,7 @@ namespace Imenik_API.Context
     public class ApiContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<Imenik> Sifrarnici { get; set; }
+        public DbSet<Imenik> Imenici { get; set; }
         public DbSet<ImenikSifarnikDrzava> ImenikSifarnikDrzave { get; set; }
         public DbSet<ImenikSifarnikZupanija> ImenikSifarnikZupanije { get; set; }
         public DbSet<DodatnaAdresa> DodatneAdrese { get; set; }

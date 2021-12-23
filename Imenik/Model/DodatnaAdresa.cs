@@ -35,6 +35,7 @@ namespace Imenik_API.Model
         [ForeignKey("SifarnikDrzavaId")]
         public ImenikSifarnikDrzava Drzave { get; set; }
 
+        // Zamjeniti foreign key i display 
         [ForeignKey("SifarnikZupanijaId")]
         public ImenikSifarnikZupanija Zupanije { get; set; }
 

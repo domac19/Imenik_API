@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Imenik_API
 {
+    // dodatne adrese dodati ovdije
     public partial class ImenikData
     {
         public static void Initialize(IServiceProvider serviceProvider)
@@ -14,11 +15,11 @@ namespace Imenik_API
             using (var dbContext = new ApiContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApiContext>>()))
             {
-                if (dbContext.Sifrarnici.Any())
+                if (dbContext.Imenici.Any())
                 {
                     return;
                 }
-                dbContext.Sifrarnici.AddRange(
+                dbContext.Imenici.AddRange(
                      new Imenik
                      {
                          Id = 1,

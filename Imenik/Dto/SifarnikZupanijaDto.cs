@@ -21,6 +21,6 @@ namespace Imenik_API.Dto
 
         public int DrzavaId { get; set; }
 
-        public Imenik Sifrarnik { get; set; }
+        public Imenik Imenik { get; set; }
     }
 }

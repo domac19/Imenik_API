@@ -19,6 +19,7 @@ namespace Imenik_API.Dto
         [Required]
         [StringLength(20)]
         public string Oznaka { get; set; }
-        public List<ImenikSifarnikZupanija> Zupanije { get; set; }
+       
+        //public List<ImenikSifarnikZupanija> Zupanije { get; set; }
     }
 }
