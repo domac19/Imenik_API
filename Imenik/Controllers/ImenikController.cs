@@ -11,6 +11,7 @@ using System.Data.Entity;
 namespace Imenik_API.Controllers
 {
     [Route("api/Imenik")]
+    [ApiController]
     public class ImenikController : Controller
     {
         private ApiContext _apiContext { get; set; }
@@ -28,20 +29,19 @@ namespace Imenik_API.Controllers
 
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public ImenikDto GetImenik(int id)
+        public ImenikDto GetImenik([FromBody] int id)
         {
-            var sifrarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
+            var sifrarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id); 
 
             if (sifrarnik == null)
                 throw new Exception();
 
-            return Mapper.Map<Imenik, ImenikDto>(sifrarnik);
+             return Mapper.Map<Imenik, ImenikDto>(sifrarnik); 
         }
-        //{frombody }
         [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
-        public void UpdateImenik(int id, ImenikDto sifrarnikDto)
+        public void UpdateImenik(int id, [FromBody] ImenikDto sifrarnikDto)
         {
             if (id != sifrarnikDto.Id)
                 throw new Exception();
@@ -59,7 +59,7 @@ namespace Imenik_API.Controllers
         [Authorize]
         //POST/api/Imenik
         [HttpPost]
-        public ImenikDto CreateImenik(ImenikDto sifrarnikDto)
+        public ImenikDto CreateImenik([FromBody] ImenikDto sifrarnikDto)
         {
             var sifarnik = Mapper.Map<ImenikDto, Imenik>(sifrarnikDto);
 
@@ -74,7 +74,7 @@ namespace Imenik_API.Controllers
         [Authorize]
         //DELETE/api/Imenik/5
         [HttpDelete("{id}")]
-        public void DeleteSifrarnik(int id)
+        public void DeleteSifrarnik([FromBody] int id)
         {
             var sifarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
 
