@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace Imenik_API
 {
-    // dodatne adrese dodati ovdije
     public partial class ImenikData
     {
         public static void Initialize(IServiceProvider serviceProvider)
@@ -15,7 +14,7 @@ namespace Imenik_API
             using (var dbContext = new ApiContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApiContext>>()))
             {
-                if (dbContext.Imenici.Any())
+                if (dbContext.Imenici.Any() && dbContext.DodatneAdrese.Any())
                 {
                     return;
                 }
@@ -27,7 +26,7 @@ namespace Imenik_API
                          Prezime = "Licitar",
                          Email = "licitar.domagoj@gmail.com",
                          Kontakt = 12345,
-                         DatumRodenja = new DateTime(1996,03,19),
+                         DatumRodenja = new DateTime(1996, 03, 19),
                          Grad = "Petrinja",
                          Ulica = "Artura Turkulina",
                          KucniBroj = 28,
@@ -41,7 +40,7 @@ namespace Imenik_API
                             Prezime = "Perić",
                             Email = "peric123@gmail.com",
                             Kontakt = 51388,
-                            DatumRodenja = new DateTime(1969,04,07),
+                            DatumRodenja = new DateTime(1969, 04, 07),
                             Grad = "Osijek",
                             Ulica = "Mate Lovraka",
                             KucniBroj = 44,
@@ -55,7 +54,7 @@ namespace Imenik_API
                                 Prezime = "Radić",
                                 Email = "radicluk1@gmail.com",
                                 Kontakt = 99142,
-                                DatumRodenja = new DateTime(1966,07,12),
+                                DatumRodenja = new DateTime(1966, 07, 12),
                                 Grad = "Popovača",
                                 Ulica = "Luke Lukovića",
                                 KucniBroj = 32,
@@ -69,13 +68,21 @@ namespace Imenik_API
                                 Prezime = "Hrlić",
                                 Email = "hhrlic122@gmail.com",
                                 Kontakt = 84127,
-                                DatumRodenja = new DateTime(1999,02,15),
+                                DatumRodenja = new DateTime(1999, 02, 15),
                                 Grad = "Zagreb",
                                 Ulica = "Stjepana Radića",
                                 KucniBroj = 12,
                                 SifarnikZupanijaId = 1,
                                 SifarnikDrzavaId = 4
                             });
+                dbContext.DodatneAdrese.AddRange(
+                        new DodatnaAdresa
+                        {
+                            Id = 1,
+                            Grad = "Petrinja",
+                            Ulica = "Artura Turkulina",
+                            KucniBroj = 28
+                        });
                 dbContext.SaveChanges();
             }
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -38,14 +37,14 @@ namespace Imenik_API.Model
         
         [Required]
         public int KucniBroj { get; set; }
-        
+
+        public DodatnaAdresa DodatneAdrese { get; set; }
+
         [Display(Name = "SifarnikZupanijaId")]
         public int SifarnikZupanijaId { get; set; }
         
         [Display(Name = "SifarnikDrzavaId")]
         public int SifarnikDrzavaId { get; set; }
-        
-        public List<DodatnaAdresa> DodatneAdrese { get; set; }
         
         [ForeignKey("ImenikSifarnikDrzava")]
         public ImenikSifarnikDrzava Drzave { get; set; }

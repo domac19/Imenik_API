@@ -23,13 +23,13 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllImenik()
         {
-            var sifarnikDto = _apiContext.Imenici.Include(i => i.Drzave).Select(Mapper.Map<Imenik, ImenikDto>);
+            var sifarnikDto = _apiContext.Imenici.Include(d => d.DodatneAdrese).ToList().Select(Mapper.Map<Imenik, ImenikDto>);
             return Ok(sifarnikDto);
         }
 
         //GET/api/Imenik/1
         [HttpGet("{id}")]
-        public ImenikDto GetImenik([FromBody] int id)
+        public ImenikDto GetImenik(int id)
         {
             var sifrarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id); 
 
@@ -74,7 +74,7 @@ namespace Imenik_API.Controllers
         [Authorize]
         //DELETE/api/Imenik/5
         [HttpDelete("{id}")]
-        public void DeleteSifrarnik([FromBody] int id)
+        public void DeleteSifrarnik(int id)
         {
             var sifarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
 

@@ -18,9 +18,5 @@ namespace Imenik_API.Dto
         [Required]
         [StringLength(100)]
         public string PozivniBrojZupanije { get; set; }
-
-        public int DrzavaId { get; set; }
-
-        public Imenik Imenik { get; set; }
     }
 }
