@@ -26,23 +26,22 @@ namespace Imenik_API.Model
         [StringLength(255)]
         public string Email { get; set; }
 
+        [ForeignKey("ImenikSifarnikZupanija")]
         [Display(Name = "SifarnikZupanijaId")]
         public int SifarnikZupanijaId { get; set; }
 
+        [ForeignKey("ImenikSifarnikDrzava")]
         [Display(Name = "SifarnikDrzavaId")]
         public int SifarnikDrzavaId { get; set; }
 
-        [ForeignKey("ImenikSifarnikDrzava")]
         public ImenikSifarnikDrzava Drzave { get; set; }
 
-        
-        [ForeignKey("ImenikSifarnikZupanija")]
         public ImenikSifarnikZupanija Zupanije { get; set; }
 
+        [ForeignKey("Imenik")]
         [Display(Name = "ImenikId")]
         public int ImenikId { get; set; }
 
-        [ForeignKey("Imenik")]
         public Imenik Imenici { get; set; }
     }
 }

@@ -23,27 +23,27 @@ namespace Imenik_API.Controllers
         [HttpGet]
         public IActionResult GetAllImenik()
         {
-            var sifarnikDto = _apiContext.Imenici.Include(d => d.DodatneAdrese).ToList().Select(Mapper.Map<Imenik, ImenikDto>);
-            return Ok(sifarnikDto);
+            var imenikDto = _apiContext.Imenici.Include(d => d.DodatneAdrese).ToList().Select(Mapper.Map<Imenik, ImenikDto>);
+            return Ok(imenikDto);
         }
 
         //GET/api/Imenik/1
         [HttpGet("{id}")]
         public ImenikDto GetImenik(int id)
         {
-            var sifrarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id); 
+            var imenik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id); 
 
-            if (sifrarnik == null)
+            if (imenik == null)
                 throw new Exception();
 
-             return Mapper.Map<Imenik, ImenikDto>(sifrarnik); 
+             return Mapper.Map<Imenik, ImenikDto>(imenik); 
         }
         [Authorize]
         //PUT/api/Imenik/5
         [HttpPut("{id}")]
-        public void UpdateImenik(int id, [FromBody] ImenikDto sifrarnikDto)
+        public void UpdateImenik(int id, [FromBody] ImenikDto imenikDto)
         {
-            if (id != sifrarnikDto.Id)
+            if (id != imenikDto.Id)
                 throw new Exception();
 
             var contactExist = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
@@ -51,7 +51,7 @@ namespace Imenik_API.Controllers
             if (contactExist == null)
                 throw new Exception();
 
-            Mapper.Map(sifrarnikDto, contactExist);
+            Mapper.Map(imenikDto, contactExist);
 
             _apiContext.SaveChanges();
         }
@@ -59,16 +59,16 @@ namespace Imenik_API.Controllers
         [Authorize]
         //POST/api/Imenik
         [HttpPost]
-        public ImenikDto CreateImenik([FromBody] ImenikDto sifrarnikDto)
+        public ImenikDto CreateImenik([FromBody] ImenikDto imenikDto)
         {
-            var sifarnik = Mapper.Map<ImenikDto, Imenik>(sifrarnikDto);
+            var sifarnik = Mapper.Map<ImenikDto, Imenik>(imenikDto);
 
             _apiContext.Imenici.Add(sifarnik);
             _apiContext.SaveChanges();
 
-            sifrarnikDto.Id = sifarnik.Id;
+            imenikDto.Id = sifarnik.Id;
 
-            return sifrarnikDto;
+            return imenikDto;
         }
 
         [Authorize]
@@ -76,12 +76,12 @@ namespace Imenik_API.Controllers
         [HttpDelete("{id}")]
         public void DeleteSifrarnik(int id)
         {
-            var sifarnik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
+            var imenik = _apiContext.Imenici.SingleOrDefault(i => i.Id == id);
 
-            if (sifarnik == null)
+            if (imenik == null)
                 throw new Exception();
 
-            _apiContext.Imenici.Remove(sifarnik);
+            _apiContext.Imenici.Remove(imenik);
             _apiContext.SaveChanges();
         }
     }

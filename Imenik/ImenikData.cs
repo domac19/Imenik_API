@@ -75,14 +75,6 @@ namespace Imenik_API
                                 SifarnikZupanijaId = 1,
                                 SifarnikDrzavaId = 4
                             });
-                dbContext.DodatneAdrese.AddRange(
-                        new DodatnaAdresa
-                        {
-                            Id = 1,
-                            Grad = "Petrinja",
-                            Ulica = "Artura Turkulina",
-                            KucniBroj = 28
-                        });
                 dbContext.SaveChanges();
             }
         }

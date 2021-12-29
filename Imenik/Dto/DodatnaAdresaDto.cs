@@ -4,7 +4,6 @@ namespace Imenik_API.Dto
 {
     public class DodatnaAdresaDto
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
