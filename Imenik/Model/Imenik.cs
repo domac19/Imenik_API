@@ -38,7 +38,7 @@ namespace Imenik_API.Model
         
         [Required]
         public int KucniBroj { get; set; }
-
+        // Podaci u DodatnojAdresi
         public List<DodatnaAdresa> DodatneAdrese = new List<DodatnaAdresa>() { new DodatnaAdresa() { Id = 1, Grad = "Zagreb" },
                                                                                new DodatnaAdresa() { Id = 2, Grad = "Ivanić Grad"},
                                                                              };
