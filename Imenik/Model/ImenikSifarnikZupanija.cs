@@ -21,11 +21,10 @@ namespace Imenik_API.Model
         [StringLength(100)]
         public string PozivniBrojZupanije { get; set; }
 
-        [ForeignKey("ImenikSifarnikDrzava")]
-        [Display(Name = "DrzavaId")]
+        [ForeignKey(nameof(ImenikSifarnikDrzava))]
         public int DrzavaId { get; set; }
 
-        public ImenikSifarnikDrzava Drzave { get; set; }
+        public ImenikSifarnikDrzava Drzava { get; set; }
         
     }
 }

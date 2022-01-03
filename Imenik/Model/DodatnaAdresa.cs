@@ -20,28 +20,25 @@ namespace Imenik_API.Model
         public int KucniBroj { get; set; }
 
         [Required]
-        public int Kontakt { get; set; }
+        public string Kontakt { get; set; }
         
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
 
-        [ForeignKey("ImenikSifarnikZupanija")]
-        [Display(Name = "SifarnikZupanijaId")]
+        [ForeignKey(nameof(ImenikSifarnikZupanija))]
         public int SifarnikZupanijaId { get; set; }
 
-        [ForeignKey("ImenikSifarnikDrzava")]
-        [Display(Name = "SifarnikDrzavaId")]
+        [ForeignKey(nameof(ImenikSifarnikDrzava))]
         public int SifarnikDrzavaId { get; set; }
 
-        public ImenikSifarnikDrzava Drzave { get; set; }
+        public ImenikSifarnikDrzava Drzava { get; set; }
 
-        public ImenikSifarnikZupanija Zupanije { get; set; }
+        public ImenikSifarnikZupanija Zupanija { get; set; }
 
-        [ForeignKey("Imenik")]
-        [Display(Name = "ImenikId")]
+        [ForeignKey(nameof(Imenik))]
         public int ImenikId { get; set; }
 
-        public Imenik Imenici { get; set; }
+        public Imenik Imenik { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Imenik_API.Model
         public string Email { get; set; }
 
         [Required]
-        public int Kontakt { get; set; }
+        public string Kontakt { get; set; }
         
         [Required]
         public DateTime? DatumRodenja { get; set; }
@@ -39,18 +39,17 @@ namespace Imenik_API.Model
         [Required]
         public int KucniBroj { get; set; }
 
-        public List<DodatnaAdresa> DodatneAdrese { get; set; }
-
-        [ForeignKey("ImenikSifarnikZupanija")]
-        [Display(Name = "SifarnikZupanijaId")]
+        public List<DodatnaAdresa> DodatneAdrese = new List<DodatnaAdresa>() { new DodatnaAdresa() { Id = 1, Grad = "Zagreb" },
+                                                                               new DodatnaAdresa() { Id = 2, Grad = "Ivanić Grad"},
+                                                                             };
+        [ForeignKey(nameof(ImenikSifarnikZupanija))]
         public int SifarnikZupanijaId { get; set; }
 
-        [ForeignKey("ImenikSifarnikDrzava")]
-        [Display(Name = "SifarnikDrzavaId")]
+        [ForeignKey(nameof(ImenikSifarnikDrzava))]
         public int SifarnikDrzavaId { get; set; }
         
-        public ImenikSifarnikDrzava Drzave { get; set; }
+        public ImenikSifarnikDrzava Drzava { get; set; }
         
-        public ImenikSifarnikZupanija Zupanije { get; set; }
+        public ImenikSifarnikZupanija Zupanija { get; set; }
     }
 }

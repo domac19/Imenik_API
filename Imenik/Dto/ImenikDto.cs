@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,17 +22,24 @@ namespace Imenik_API.Dto
         public string Email { get; set; }
 
         [Required]
-        public int Kontakt { get; set; }
+        public string Kontakt { get; set; }
 
         [Required]
         public DateTime? DatumRodenja { get; set; }
 
-        public DodatnaAdresaDto DodatneAdrese { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Grad { get; set; }
 
-        [Display(Name = "SifarnikZupanijaId")]
-        public int SifarnikZupanijaId { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Ulica { get; set; }
 
-        [Display(Name = "SifarnikDrzavaId")]
+        [Required]
+        public int KucniBroj { get; set; }
+
+        public List<DodatnaAdresaDto> DodatneAdrese { get; set; }
+
         public int SifarnikDrzavaId { get; set; }
         
     }
