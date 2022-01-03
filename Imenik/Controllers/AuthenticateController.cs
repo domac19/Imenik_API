@@ -59,7 +59,7 @@ namespace JWTAuthentication.Controllers
         {
             LoginModel user = null;
 
-            if (login.KorisnickoIme == "Domagoj" && login.Lozinka == "d0M@12")
+            if (login.KorisnickoIme == "Domagoj" && login.Lozinka == "d0M@c12")
             {
                 user = new LoginModel { KorisnickoIme = "Domagoj Licitar", Lozinka = "d0M@c12"};
             }
