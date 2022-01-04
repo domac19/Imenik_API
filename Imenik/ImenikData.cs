@@ -31,7 +31,6 @@ namespace Imenik_API
                          Grad = "Petrinja",
                          Ulica = "Artura Turkulina",
                          KucniBroj = 28,
-                         DodatneAdrese = new List<DodatnaAdresa>() { new DodatnaAdresa { Grad = "Zagreb" } },
                          SifarnikZupanijaId = 10,
                          SifarnikDrzavaId = 1
                      },
@@ -77,20 +76,20 @@ namespace Imenik_API
                                 SifarnikZupanijaId = 1,
                                 SifarnikDrzavaId = 4
                             });
-
-                dbContext.DodatneAdrese.Add(new DodatnaAdresa
-                {
-                    Id = 1,
-                    Grad = "Zagreb",
-                    Ulica = "Augusta Šenoe",
-                    KucniBroj = 3,
-                    Kontakt = "3851119103",
-                    Email = null,
-                    SifarnikDrzavaId = 1,
-                    SifarnikZupanijaId = 1,
-                    ImenikId = 1
-                });
-                dbContext.SaveChanges(); 
+                
+                    dbContext.DodatneAdrese.Add(new DodatnaAdresa
+                    {
+                        Id = 1,
+                        Grad = "Zagreb",
+                        Ulica = "Augusta Šenoe",
+                        KucniBroj = 3,
+                        Kontakt = "3851119103",
+                        Email = null,
+                        SifarnikDrzavaId = 1,
+                        SifarnikZupanijaId = 1,
+                        ImenikId = 1
+                    });
+                dbContext.SaveChanges();
             }
         }
     }

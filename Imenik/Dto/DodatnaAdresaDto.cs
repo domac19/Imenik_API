@@ -18,7 +18,7 @@ namespace Imenik_API.Dto
         public int KucniBroj { get; set; }
 
         [Required]
-        public int? Kontakt { get; set; }
+        public string Kontakt { get; set; }
 
         [Required]
         [StringLength(255)]

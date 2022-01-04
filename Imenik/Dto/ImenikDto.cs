@@ -38,7 +38,7 @@ namespace Imenik_API.Dto
         [Required]
         public int KucniBroj { get; set; }
 
-        public List<DodatnaAdresaDto> DodatneAdrese { get; set; }
+        public List<DodatnaAdresaDto> DodatneAdrese { get; set; } = new List<DodatnaAdresaDto>();
 
         public int SifarnikDrzavaId { get; set; }
         
